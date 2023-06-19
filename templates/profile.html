@@ -1,0 +1,196 @@
+{% extends 'base.html'%}
+{% block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+        <div class="container">
+    
+          <!-- Brand -->
+          <a class="navbar-brand waves-effect" href="http://127.0.0.1:8000/" target="_blank">
+            <strong class="blue-text">JNJ</strong>
+          </a>
+    
+          <!-- Collapse -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <!-- Links -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link waves-effect" href="/">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link waves-effect" href="http://127.0.0.1:8000/chck_out/">Check Out</a>
+              </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link waves-effect" href="{% url 'account_logout' %}"
+                  >Logout</a>
+              </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link waves-effect" href="{% url 'account_login' %}"
+                    >Login</a>
+                </li>
+              {% endif %}
+            </ul>
+    
+            <!-- Right -->
+            <ul class="navbar-nav nav-flex-icons">
+              <li class="nav-item">
+                <a class="nav-link waves-effect" href="http://127.0.0.1:8000/cart/">
+                  <span class="badge red z-depth-1 mr-1"> {{count}} </span>
+                  <i class="fas fa-shopping-cart"></i>
+                  <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+                </a>
+              </li>
+              {% if user.is_authenticated %}
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" style="text-decoration: none;" href="http://127.0.0.1:8000/profile/">
+              <span class="clearfix d-none d-sm-inline-block"> Hello, {{user.username }}</span>
+            </a>
+          </li>
+          {% endif %}
+              <li class="nav-item">
+                <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              
+            </ul>
+    
+          </div>
+    
+        </div>
+    </nav>
+        <div class="container wow fadeIn">
+            <div class="row">
+              <div class="heading-profile">
+                <h1>My Account</h1>
+              </div>
+              <div class="profile-pic">
+                <img src="C:\Users\user\Desktop\web designing\mine\team2.jpg" width="300" height="300">
+              </div>
+                <!--Grid column-->
+                <div class="col-md-8 mb-4" style="padding-top: 3em; margin-left: auto;">
+                  
+                    <!--Card-->
+                    <div class="card">
+            
+                        <!--Card content-->
+                        <form class="card-body" method="POST" >
+                            {% csrf_token %}
+                          <!--Grid row-->
+                            <div class="row">
+                                <!--Grid column-->
+                            {% if user.first_name%}
+                                <div class="col-md-6 mb-2">
+                                  <div class="md-form">
+                                    <label for='first_name'>First Name</label><input type="text" id="first_name" maxlength="20" class="form-control" name="first_name" value="{{user.first_name}}">
+                                  </div>
+                                </div>
+                            {% else %}
+                                <div class="col-md-6 mb-2">
+                                  <div class="md-form">
+                                    <label for='first_name'>First Name</label><input type="text" id="first_name" maxlength="20" class="form-control" name="first_name" >
+                                  </div>
+                                </div>
+                            {% endif %}
+                            {% if user.last_name%}
+                                <div class="col-md-6 mb-2">
+                                  <div class="md-form">
+                                    <label for='last_name'>Last Name</label><input type="text" id="last_name" name="last_name" maxlength="20" class="form-control" value="{{user.last_name}}">
+                                  </div>
+                                </div>
+                            {% else %}
+                                <div class="col-md-6 mb-2">
+                                    <div class="md-form">
+                                      <label for='last_name'>Last Name</label><input type="text" id="last_name" name="last_name" maxlength="20" class="form-control">
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if user.email %}
+                                <div class="col-md-12 mb-2">
+                                    <div class="md-form">
+                                      <label for='email_usr'>Email</label><input type="email" id="email_usr" name="email_usr" class="form-control" value="{{ user.email }}">
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="mb-2">
+                                    <div class="md-form">
+                                      <label for='email_usr'>Email</label><input type="email" id="email_usr" name="email_usr" class="form-control">
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="btn-profile">
+                              <input class="btn btn-md my-0 p mb-3 mt-1" type="submit" value="Save Details" name="dtls_save">
+                            </div>
+                            
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-4" style="width: 100%; margin-left:start; margin-top: 3em;">
+                          <div class="card">
+                            <form class="card-body" method="POST" >
+                              {% csrf_token %}
+                                <div class="col-md-12 mb-2">
+                                  <div class="md-form">
+                                    <label for='adress_usr'>Adress</label><input type="text" id="adress_usr" name="adress_usr" class="form-control">
+                                  </div>
+                                </div>
+                                <div class="col-md-3 mb-2 " style="float: left;">
+                                  <div class="md-form">
+                                    <label for='state_usr'>State</label><input type="text" id="state_usr" name="state_usr" maxlength="20" class="form-control">
+                                  </div>
+                                  </div>
+                                <div class="col-md-3 mb-2" style="float: left; margin-left: 8.5em;">
+                                  <div class="md-form">
+                                    <label for='cont_usr'>Country</label><input type="text" id="cont_usr" name="cont_usr" maxlength="20" class="form-control">
+                                  </div>
+                                  </div>
+                                <div class="col-md-3 mb-2" style="float: left; margin-left:8.2em;">
+                                  <div class="md-form">
+                                    <label for='zip_usr'>PIN Code</label><input type="text" id="zip_usr" name="zip_usr" maxlength="20" class="form-control">
+                                  </div>
+                                  </div>
+                                  <div class="chck-box-profile">
+                                    <input type="checkbox" value="Use this adress as default" name="dflt_adrs"><label for="chck_box">Use this as default adress</label>
+                                  </div>
+                                  <div class="btn-profile2">
+                                    <input class="btn btn-md my-0 p" type="submit" value="Save Adress" name="adrs_save">
+                                    
+                                  </div>
+                                  <div class="btn-profile3">
+                                    <a href="http://127.0.0.1:8000/adress/">My Adresses</a> 
+                                  </div>
+                                
+                                
+                                
+                              </form>
+                            </div>
+                </div>
+        </div>
+    </div>       
+</body>
+</html>
+{% endblock content %}

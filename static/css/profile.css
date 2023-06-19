@@ -1,0 +1,67 @@
+.profile-pic img{
+    margin-top: 3em;
+    margin-left: 1em;
+
+}
+.btn-profile input{
+    letter-spacing: 1px;
+    background-color: #2d2d2d;
+    color: #eee;
+    margin-left: 50em;
+}
+.btn-profile input:hover{
+    color: #eee;
+}
+.btn-profile2{
+    margin-top: .5em;
+    margin-bottom: .5em;
+    float: left;
+}
+.btn-profile3{
+    float: left;
+    margin-top: .87em;
+}
+.btn-profile2 input{
+    letter-spacing: 1px;
+    background-color: #2d2d2d;
+    color: #eee;
+    margin-left: 70em;
+    
+}
+.btn-profile2 input:hover{
+    color: #eee;
+}
+.btn-profile3 a{
+    text-align: center;
+    background-color: #2d2d2d;
+    text-decoration: none;
+    color: #eee;
+    font-size: .7em;
+    border-radius: .126rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    border-width: .82em;
+    padding: 13px 25px;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.btn-profile3 a:hover{
+    text-decoration: none;
+    color: white;
+}
+.btn-profile3 a:active{
+    opacity: 80%;
+    transition: all .15s ease-in-out;
+}
+.chck-box-profile{
+    padding-left: 1em;
+}
+.chck-box-profile label{
+    margin-left: .5em;
+}
+.heading-profile{
+    letter-spacing: 1px;
+    margin-top: 10em;
+    width: 100%;
+    padding-left: 1em;
+}

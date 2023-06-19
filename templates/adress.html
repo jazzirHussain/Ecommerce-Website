@@ -1,0 +1,119 @@
+{% extends 'base.html'%}
+{% block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="http://127.0.0.1:8000/" target="_blank">
+        <strong class="blue-text">JNJ</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="/">Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="http://127.0.0.1:8000/chck_out/">Check Out</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{% url 'account_logout' %}"
+              >Logout</a>
+          </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="{% url 'account_login' %}"
+                >Login</a>
+            </li>
+          {% endif %}
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="http://127.0.0.1:8000/cart/">
+              <span class="badge red z-depth-1 mr-1">{{ count }}</span>
+              <i class="fas fa-shopping-cart"></i>
+              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+            </a>
+          </li>
+          {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link waves-effect" style="text-decoration: none;" href="http://127.0.0.1:8000/profile/">
+          <span class="clearfix d-none d-sm-inline-block"> Hello, {{user.username }}</span>
+        </a>
+      </li>
+      {% endif %}
+          <li class="nav-item">
+            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          
+        </ul>
+
+      </div>
+
+    </div>
+</nav>
+    <div class="main">
+      <div class="adress-show">
+        <div class="adres-card-bdy">
+          <div class="heading">
+            <h1>My Adress</h1>
+          </div>
+          {% for adress in adresses %}
+          <div class="mt-5">
+            <div class="adres-card">
+              <h2>{{adress.add}}</h2>
+              <div class="dtls">
+                <p>{{adress.state}},{{adress.cont}}<br>{{adress.zip_code}}</p>
+              </div>
+              <div class="butons">
+                <span class="waves-input-wrapper waves-effect waves-light">
+                  <a href="{{adress.get_unique_id}}">Use this adress</a>
+                </span>
+                
+                <form class="form-adrs" method="POST">
+                  {% csrf_token %}
+                  <input class="btn btn-sm my-1" type="submit" value="Delete Adress" name="dlt">
+                  <input type="hidden" value="{{adress.pk}}" name="delete_adrs">
+                </form>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          
+            
+        </div>
+      </div>
+
+    </div>
+</body>
+</html>
+{% endblock content %}

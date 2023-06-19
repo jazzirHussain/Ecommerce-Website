@@ -1,0 +1,78 @@
+.body,.html{
+    height: 100%;
+}
+.card-login{
+    background-color: white;
+    width: 30em;
+    height: 30em;
+    border: 1px #ddd solid;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+.row-login{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 5em;
+}
+.form-login{
+    margin-top: 1em;
+    width: 100%;
+}
+.md-login{
+    width: 85%;
+    margin: 0 auto;
+}
+.remember{
+    margin-top: 2em;
+    margin-left: 2.3em;
+}
+.remember button{
+    margin-left: 12.6em;
+    outline: none;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 6px 23px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.612), 0 2px 10px 0 rgba(0, 0, 0, 0.625);
+    font-size: 14px;
+    border-radius: 4px;
+    transition: all .15s ease-in-out;
+}
+.remember button:focus{
+    outline: none;
+}
+.remember button:active{
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    opacity: 80%;
+}
+.remember button:hover{
+    opacity: 80%;
+}
+.remember-login{
+    margin-left: .5em;
+}
+.login-field input{
+    border: 1px solid #a6a6a6;
+    border-top-color: #949494;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(255,255,255,.5), 0 1px 0 rgba(0,0,0,.07) inset;
+    outline: 0;
+    padding: 6px 7px;
+}
+.login-head{
+    padding-top: 1em;
+    width: 85%;
+    letter-spacing: .5px;
+    margin: 0 auto;
+
+}
+.pass-login{
+    margin-top: 3em;
+}
+.pass-login input{
+    width: 100%;
+}
+.extras{
+    margin-left: 2.3em;
+    margin-top: 5em;
+}
